@@ -24,7 +24,7 @@ export const Chat = ({ location }) => {
   }
 
   useEffect(() => {
-    socket = SocketIo('https://chatapp-backend-qa96.onrender.com:3001/', { transports: ['websocket'] });
+    socket = SocketIo('https://chatapp-backend-qa96.onrender.com/', { transports: ['websocket'] });
     socket.on('connect', () => {
       console.log('connected');
       setId(socket.id);
