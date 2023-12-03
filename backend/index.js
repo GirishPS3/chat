@@ -11,6 +11,9 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+app.get('/test', (req, res) => {
+  res.json({message: 'test'})
+});
 
 io.on('connection', (socket) => {
   console.log('a user connected');
