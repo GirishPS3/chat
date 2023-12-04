@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Profiler } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +9,13 @@ import { Chat } from './components/Chat';
 import { Join } from './components/Join';
 
 export default function App() {
+  function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
+    // Aggregate or log render timings...
+    console.log(id, phase, actualDuration, baseDuration)
+  }
+
   return (
+    <Profiler id='app' onRender={onRender}>
     <Router>
       <Switch>
         <Route exact path="/" component={Join} />
@@ -17,5 +23,6 @@ export default function App() {
 
       </Switch>
     </Router>
+    </Profiler>
   );
 }
